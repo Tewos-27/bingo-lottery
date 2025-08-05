@@ -11,6 +11,8 @@ import { User } from './dto/user.object';
 export class UserResolver {
   constructor(private userService: UserService) {}
 
+// This file defines the GraphQL resolver for user-related operations, including fetching users, deactivating a user, and promoting a user to admin.
+// It uses guards to ensure that only authorized users can perform these actions.
   @Query(() => [User], { name: 'users' })
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.ADMIN)

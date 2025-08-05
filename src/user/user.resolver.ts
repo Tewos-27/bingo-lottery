@@ -13,6 +13,7 @@ export class UserResolver {
 
 // This file defines the GraphQL resolver for user-related operations, including fetching users, deactivating a user, and promoting a user to admin.
 // It uses guards to ensure that only authorized users can perform these actions.
+//  This query retrieves all users from the database, accessible only to admin users.
   @Query(() => [User], { name: 'users' })
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.ADMIN)

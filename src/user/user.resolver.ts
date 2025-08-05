@@ -31,7 +31,8 @@ export class UserResolver {
     await this.userService.deactivateUser(userId, context.req.user);
     return true;
   }
-
+// This mutation allows an admin to promote a user to admin status, ensuring that the requesting user has the necessary permissions.
+// It checks if the user exists and updates their role accordingly.
   @Mutation(() => User, { name: 'promoteToAdmin' })
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.ADMIN)

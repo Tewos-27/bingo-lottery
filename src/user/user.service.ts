@@ -44,7 +44,8 @@ export class UserService {
       data: { isActive: false },
     });
   }
-
+//  This method promotes a user to admin status, ensuring that the requesting user has the necessary permissions.
+  // It checks if the user exists and updates their role accordingly.
   async promoteToAdmin(userId: number, requestingUser: any): Promise<PrismaUser> {
     if (requestingUser.role !== Role.ADMIN) {
       throw new ForbiddenException('Only admins can promote users');

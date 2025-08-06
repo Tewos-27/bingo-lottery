@@ -6,7 +6,8 @@ import { User as PrismaUser } from '@prisma/client';
 @Injectable()
 export class UserService {
   constructor(private prisma: PrismaService) {}
-
+// This service handles user-related operations such as fetching users, deactivating a user, and promoting a user to admin.
+  // It interacts with the Prisma service to perform database operations and applies necessary business logic.
   async getUsers(): Promise<PrismaUser[]> {
     return this.prisma.user.findMany();
   }
